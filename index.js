@@ -88,7 +88,19 @@ const port = process.env.PORT || 3000;
 // middlewares
 app.use(express.json());
 app.use(cors());
-
+app.get('/', (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>My Express App</title>
+      </head>
+      <body>
+        <h1>Server is Running</h1>
+      </body>
+    </html>
+  `);
+});
 // health check (handy for uptime checks)
 app.get('/health', (req, res) => res.json({ ok: true, uptime: process.uptime() }));
 
